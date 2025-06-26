@@ -1,151 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta tags for responsiveness and SEO -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sabri Diab's portfolio - Academic Esports graduate and Multimedia & Game Technologies master's student." />
+  <meta name="author" content="Sabri Diab" />
   <title>Sabri Diab | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
-    /* Global Styles */
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background: #e0e0e0; /*#f0f0f0*/
+      background: #e0e0e0;
       color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    /* Header Styles */
-    header {
-      background: #2b2d42;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-    }
-
-    /* Main Container */
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    /* Section Styling */
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: #2b2d42;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.2rem;
+      transition: background 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+      font-size: 16px;
     }
     a {
       color: #1b6ca8;
       text-decoration: none;
+      transition: color 0.3s;
     }
-    .contact a {
-      display: block;
-      margin: 0.3rem 0;
+    a:hover,
+    a:focus {
+      color: #145a86;
+      outline: none;
     }
-    .project {
+
+    /* Sticky Header with navigation */
+    header {
+      background: #2b2d42;
+      color: white;
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      flex-grow: 1;
+    }
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #1b6ca8;
+      outline: none;
+    }
+
+    /* Dark mode toggle button */
+    .toggle-button {
+      background: white;
+      color: #2b2d42;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+    }
+    .toggle-button:hover,
+    .toggle-button:focus {
+      background-color: #1b6ca8;
+      color: white;
+      outline: none;
+    }
+
+    /* Main content */
+    main {
+      max-width: 900px;
+      margin: 2rem auto 3rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    section:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    section:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    section:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    section:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+    section:nth-child(5) {
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section headers */
+    h2 {
+      color: #2b2d42;
+      border-bottom: 3px solid #ddd;
+      padding-bottom: 0.5rem;
       margin-bottom: 1rem;
+      font-size: 1.75rem;
     }
 
-    /* Footer Styles */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #eee;
-      font-size: 0.9rem;
-    }
-
-    /* Profile Image Styles */
-    img.profile {
-      width: 180px;
-      border-radius: 12px;
-      /* margin removed and managed by flexbox */
-      display: block;
-    }
-
-    /* Container to align image and text side-by-side in About Me */
+    /* About Me container - flex for desktop */
     .about-me-container {
       display: flex;
       align-items: center;
-      gap: 1.5rem; /* space between image and text */
+      gap: 2rem;
     }
-    /* Prevent image shrinking */
     .about-me-container img.profile {
+      width: 180px;
+      border-radius: 12px;
       flex-shrink: 0;
-      margin: 0; /* reset any default margin */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
-    /* Paragraph takes the remaining width */
+    .about-me-container img.profile:hover,
+    .about-me-container img.profile:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
     .about-me-container p {
       margin: 0;
       flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.5;
     }
 
-    /* Dark Mode Styles */
+    /* Skills list */
+    ul {
+      padding-left: 1.4rem;
+      list-style-type: disc;
+      font-size: 1.1rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Project styles */
+    .project {
+      margin-bottom: 1.5rem;
+    }
+    .project h3 {
+      margin: 0 0 0.3rem 0;
+      color: #1b6ca8;
+      font-size: 1.3rem;
+    }
+    .project p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Resume link style */
+    section a.download-resume {
+      display: inline-block;
+      background-color: #1b6ca8;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    section a.download-resume:hover,
+    section a.download-resume:focus {
+      background-color: #145a86;
+      outline: none;
+    }
+
+    /* Contact links */
+    .contact a {
+      display: inline-block;
+      margin-right: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .contact a:last-child {
+      margin-right: 0;
+    }
+    .contact a:hover,
+    .contact a:focus {
+      color: #145a86;
+      outline: none;
+    }
+
+    /* Footer styling */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #eee;
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+    }
+
+    /* Dark mode styles */
     body.dark-mode {
       background: #121212;
       color: #e0e0e0;
     }
     body.dark-mode header {
       background: #1e1e2f;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
     body.dark-mode h2 {
-      color: #fff;
+      color: #f0f0f0;
       border-color: #444;
     }
     body.dark-mode a {
       color: #90caf9;
     }
+    body.dark-mode a:hover,
+    body.dark-mode a:focus {
+      color: #64b5f6;
+    }
     body.dark-mode footer {
       background: #1e1e1e;
+      color: #888;
+    }
+    body.dark-mode .toggle-button {
+      background: #2b2d42;
+      color: #90caf9;
+    }
+    body.dark-mode .toggle-button:hover,
+    body.dark-mode .toggle-button:focus {
+      background-color: #64b5f6;
+      color: #121212;
+      outline: none;
+    }
+    body.dark-mode .about-me-container img.profile:hover,
+    body.dark-mode .about-me-container img.profile:focus {
+      transform: scale(1.05);
+      outline: none;
+      filter: brightness(1.2);
     }
 
-    /* Dark Mode Toggle Button Styles */
-    .toggle-button {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav {
+        justify-content: center;
+        width: 100%;
+      }
+      .about-me-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-me-container p {
+        font-size: 1rem;
+      }
+      .about-me-container img.profile {
+        width: 140px;
+        margin-bottom: 1rem;
+      }
+      .contact a {
+        display: block;
+        margin-bottom: 0.6rem;
+        margin-right: 0;
+      }
+      main {
+        margin: 1rem auto 2rem auto;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header Section -->
+  <!-- Header with site title, nav, and dark mode toggle -->
   <header>
     <h1>Sabri Diab</h1>
-    <p>Academic Esports Graduate | Game Technologies & Multimedia Master's Student</p>
-    <button class="toggle-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle-button" aria-label="Toggle Dark Mode" id="darkModeToggle">🌙 Dark Mode</button>
   </header>
 
-  <!-- Main Content Area -->
+  <!-- Main content area -->
   <main>
-
     <!-- About Me Section -->
-    <section>
+    <section id="about">
       <h2>About Me</h2>
       <div class="about-me-container">
-        <img src="sabri.jpg" alt="Sabri Diab" class="profile" />
+        <img src="sabri.jpg" alt="Sabri Diab" class="profile" tabindex="0" />
         <p>
           I recently earned a Bachelor's degree in Academic Esports from the University of Agder (UiA), graduating in June 2025 with top honors, including an A on my thesis. I am currently pursuing a Master's degree in Multimedia and Game Technologies. My academic and professional interests lie at the intersection of game development, esports event management, and cutting-edge technologies such as virtual reality and digital media.
         </p>
@@ -153,7 +337,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section>
+    <section id="skills">
       <h2>Skills</h2>
       <ul>
         <li>C#</li>
@@ -169,7 +353,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section>
+    <section id="projects">
       <h2>Projects</h2>
       <div class="project">
         <h3>ESCAPED – VR Escape Room</h3>
@@ -182,33 +366,61 @@
     </section>
 
     <!-- Resume Section -->
-    <section>
+    <section id="resume">
       <h2>Resume</h2>
-      <p><a href="CV_English.pdf" target="_blank" download>📄 Download My Resume (PDF)</a></p>
+      <p>
+        <a href="CV_English.pdf" class="download-resume" target="_blank" download>📄 Download My Resume (PDF)</a>
+      </p>
     </section>
 
     <!-- Contact Section -->
-    <section>
+    <section id="contact">
       <h2>Contact</h2>
-      <div class="contact">
-        <a href="mailto:sabri1309@outlook.com">📧 sabri1309@outlook.com</a>
-        <a href="https://github.com/Sabri1309" target="_blank">💻 GitHub</a>
-        <a href="https://www.linkedin.com/in/sabri-diab-894b65169" target="_blank">🔗 LinkedIn</a>
+      <div class="contact" role="list">
+        <a href="mailto:sabri1309@outlook.com" role="listitem" aria-label="Send email to Sabri Diab">📧 sabri1309@outlook.com</a>
+        <a href="https://github.com/Sabri1309" target="_blank" role="listitem" aria-label="Visit Sabri Diab's GitHub">💻 GitHub</a>
+        <a href="https://www.linkedin.com/in/sabri-diab-894b65169" target="_blank" role="listitem" aria-label="Visit Sabri Diab's LinkedIn">🔗 LinkedIn</a>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
     &copy; 2025 Sabri Diab. All rights reserved.
   </footer>
 
-  <!-- Dark Mode Toggle Script -->
+  <!-- JavaScript for Dark Mode Toggle & Smooth Scroll -->
   <script>
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    // Initialize dark mode based on localStorage
+    const darkModePref = localStorage.getItem('darkMode');
+    if (darkModePref === 'enabled') {
+      document.body.classList.add('dark-mode');
+      toggleButton.textContent = '☀️ Light Mode';
+    }
+
+    // Toggle dark mode function
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
     }
+
+    toggleButton.addEventListener('click', toggleDarkMode);
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetID = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetID);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
