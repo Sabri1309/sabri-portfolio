@@ -6,8 +6,21 @@
   <title>Sabri Diab | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
-    header { background: #2b2d42; color: white; padding: 2rem; text-align: center; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: #2b2d42;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 0.5rem 0 0; font-size: 1.2rem; }
     main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
@@ -18,25 +31,58 @@
     .contact a { display: block; margin: 0.3rem 0; }
     .project { margin-bottom: 1rem; }
     footer { text-align: center; padding: 1rem; background: #eee; font-size: 0.9rem; }
+    img.profile { width: 180px; border-radius: 12px; float: right; margin-left: 20px; margin-bottom: 10px; }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode header {
+      background: #1e1e2f;
+    }
+    body.dark-mode h2 {
+      color: #fff;
+      border-color: #444;
+    }
+    body.dark-mode a {
+      color: #90caf9;
+    }
+    body.dark-mode footer {
+      background: #1e1e1e;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Sabri Diab</h1>
     <p>Academic Esports Graduate | Game & Multimedia Master's Student</p>
+    <button class="toggle-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
   </header>
   <main>
     <section>
-  <h2>About Me</h2>
-  <img src="sabri.jpg" alt="Sabri Diab" style="width:180px; border-radius: 12px; float:right; margin-left: 20px; margin-bottom: 10px;" />
-  <p>I recently earned a Bachelor's degree in Academic Esports from the University of Agder (UiA), graduating in June 2025 with top honors, including an A on my thesis. I am currently pursuing a Master's degree in Multimedia and Game Technologies. My academic and professional interests lie at the intersection of game development, esports event management, and cutting-edge technologies such as virtual reality and digital media.</p>
-</section>
-
+      <h2>About Me</h2>
+      <img src="sabri.jpg" alt="Sabri Diab" class="profile" />
+      <p>I recently earned a Bachelor's degree in Academic Esports from the University of Agder (UiA), graduating in June 2025 with top honors, including an A on my thesis. I am currently pursuing a Master's degree in Multimedia and Game Technologies. My academic and professional interests lie at the intersection of game development, esports event management, and cutting-edge technologies such as virtual reality and digital media.</p>
+    </section>
 
     <section>
       <h2>Skills</h2>
       <ul>
         <li>C#</li>
+        <li>Python</li>
         <li>Unity</li>
         <li>Godot</li>
         <li>VR Game Development</li>
@@ -55,14 +101,14 @@
       </div>
       <div class="project">
         <h3>Bluebox LAN</h3>
-        <p>In Winter 2024, I planned and hosted a LAN party at the University of Agder (UiA). I took the lead on sponsorship outreach and time management, while also contributing to event logistics, budgeting, media coordination, and the design of promotional materials    </p>
+        <p>In Winter 2024, I planned and hosted a LAN party at the University of Agder (UiA). I took the lead on sponsorship outreach and time management, while also contributing to event logistics, budgeting, media coordination, and the design of promotional materials.</p>
       </div>
     </section>
 
     <section>
-  <h2>Resume</h2>
-  <p><a href="CV_English.pdf" target="_blank" download>📄 Download My Resume (PDF)</a></p>
-</section>
+      <h2>Resume</h2>
+      <p><a href="CV_English.pdf" target="_blank" download>📄 Download My Resume (PDF)</a></p>
+    </section>
 
     <section>
       <h2>Contact</h2>
@@ -76,5 +122,10 @@
   <footer>
     &copy; 2025 Sabri Diab. All rights reserved.
   </footer>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
