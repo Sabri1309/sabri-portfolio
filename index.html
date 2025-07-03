@@ -137,6 +137,64 @@
   </style>
 </head>
 <body>
-  <!-- Your HTML content remains unchanged here -->
+  <header>
+    <h1>Sabri Diab</h1>
+    <div id="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Sabri Diab, a passionate web developer focused on building responsive and user-friendly websites.</p>
+      <a href="#" class="download-resume">Download Resume</a>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li class="project">Portfolio Website</li>
+        <li class="project">E-Commerce App</li>
+        <li class="project">Blog Platform</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <a href="mailto:sabri@example.com">Email Me</a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Sabri Diab. All rights reserved.
+  </footer>
+
+  <button id="toTop" onclick="scrollToTop()">↑</button>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    function toggleMenu() {
+      nav.classList.toggle('open');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('toTop').style.display =
+        window.scrollY > 200 ? 'block' : 'none';
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
